@@ -38,6 +38,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+            
               <li class="nav-item">
                 <a class="nav-link" href="/">Home
                   <span class="sr-only">(current)</span>
@@ -67,6 +68,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login
+                  <span class="sr-only">(current)</span>
+                </a>
               </li>
             </ul>
           </div>
