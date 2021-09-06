@@ -26,16 +26,16 @@
             <form action="/register" method="POST">
                 @csrf
                 <h1>Sign Up</h1>
-                <input type="text" placeholder="Frist Name" name="frist_name" />
-                <input type="text" placeholder="Last Name" name="last_name" />
-                <input type="email" placeholder="Email" name="email" />
-                <input type="text" placeholder="Phone" name="phone" />
-                <input type="password" placeholder="Password" name="password" />
-                <input type="text" placeholder="Address" name="address" />
-                <input type="text" placeholder="Address 2" name="address2" />
-                <input type="text" placeholder="City" name="city" />
-                <input type="text" placeholder="District" name="district" />
-                <input type="text" placeholder="Zip" name="zip" />
+                <input type="text" placeholder="Frist Name" name="frist_name" required />
+                <input type="text" placeholder="Last Name" name="last_name" required />
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="text" placeholder="Phone" name="phone" required />
+                <input type="password" placeholder="Password" name="password" required />
+                <input type="text" placeholder="Address" name="address" required />
+                <input type="text" placeholder="Address 2" name="address2" required />
+                <input type="text" placeholder="City" name="city" required />
+                <input type="text" placeholder="District" name="district" required />
+                <input type="text" placeholder="Zip" name="zip" required />
                 <button>Sign Up</button>
             </form>
         </div>
@@ -43,8 +43,8 @@
             <form action="/login" method="POST">
                 @csrf
                 <h1>Login</h1>
-                <input type="text" placeholder="Enter Email" name="email" />
-                <input type="password" placeholder="Enter Password" name="password" />
+                <input type="text" placeholder="Enter Email" name="email" required />
+                <input type="password" placeholder="Enter Password" name="password" required />
                 <a href="#">Forgot password?</a>
                 <button>Login</button>
             </form>
