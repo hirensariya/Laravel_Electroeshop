@@ -1,3 +1,13 @@
+@if (Session::has('Success'))
+    <script>
+        alert('{{ Session::get('Success') }}');
+    </script>
+@endif
+@if (Session::has('Fail'))
+    <script>
+        alert('{{ Session::get('Fail') }}');
+    </script>
+@endif
 <!doctype html>
 <html lang="en">
 
@@ -13,21 +23,27 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="/register" method="POST">
+                @csrf
                 <h1>Sign Up</h1>
-                <input type="text" placeholder="Your Name" name="name" />
+                <input type="text" placeholder="Frist Name" name="frist_name" />
+                <input type="text" placeholder="Last Name" name="last_name" />
                 <input type="email" placeholder="Email" name="email" />
-                <input type="text" placeholder="Address" name="address" />
-                <input type="text" placeholder="Mobile No." name="mobile_no" />
+                <input type="text" placeholder="Phone" name="phone" />
                 <input type="password" placeholder="Password" name="password" />
-                <input type="password" placeholder="Re-enter Password" name="conf_password" />
+                <input type="text" placeholder="Address" name="address" />
+                <input type="text" placeholder="Address 2" name="address2" />
+                <input type="text" placeholder="City" name="city" />
+                <input type="text" placeholder="District" name="district" />
+                <input type="text" placeholder="Zip" name="zip" />
                 <button>Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="/login" method="POST">
+                @csrf
                 <h1>Login</h1>
-                <input type="text" placeholder="Enter Mobile no" name="mobile_no" />
+                <input type="text" placeholder="Enter Email" name="email" />
                 <input type="password" placeholder="Enter Password" name="password" />
                 <a href="#">Forgot password?</a>
                 <button>Login</button>

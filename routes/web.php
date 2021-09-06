@@ -16,9 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/register','admin@register');
+
+Route::post('/login','admin@login');
+
+Route::get('/logout', 'admin@logout');
+
 Route::get('/login', function () {
     return view('login');
 });
+
 Route::get('/about', function () {
     return view('about');
 });
