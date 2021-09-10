@@ -71,8 +71,10 @@
                             Categary
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Actio</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="/product">Laptop</a>
+                            <a class="dropdown-item" href="/product">Camera</a>
+                            <a class="dropdown-item" href="/product">Mobile</a>
+                            <a class="dropdown-item" href="/product">Headphones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/checkout">Checkout</a>
@@ -84,9 +86,8 @@
 
                         <div class="dropdown-menu">
                             <a class="dropdown-item " href="/about">About Us</a>
-                            <a class="dropdown-item" href="blog.html">Blog</a>
-                            <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                            <a class="dropdown-item" href="terms.html">Terms</a>
+                            <a class="dropdown-item" href="#">Testimonials</a>
+                            <a class="dropdown-item" href="#">Terms</a>
                         </div>
                     </li>
                     <li class="nav-item">

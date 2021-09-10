@@ -185,7 +185,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="main-button">
-                                    <a href="contact.html">Contact Us</a>
+                                    <a href="/contact">Contact Us</a>
                                 </div>
                             </div>
                         </div>
