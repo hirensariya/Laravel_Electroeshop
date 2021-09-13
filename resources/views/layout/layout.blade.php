@@ -71,10 +71,10 @@
                             Categary
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/product">Laptop</a>
-                            <a class="dropdown-item" href="/product">Camera</a>
-                            <a class="dropdown-item" href="/product">Mobile</a>
-                            <a class="dropdown-item" href="/product">Headphones</a>
+                            <a class="dropdown-item" href="/product/Laptop">Laptop</a>
+                            <a class="dropdown-item" href="/product/Camera">Camera</a>
+                            <a class="dropdown-item" href="/product/Mobile">Mobile</a>
+                            <a class="dropdown-item" href="/product/Headphones">Headphones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/checkout">Checkout</a>
@@ -137,15 +137,15 @@
     </footer>
 
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/accordions.js"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.js') }}"></script>
+    <script src="{{ asset('assets/js/slick.js') }}"></script>
+    <script src="{{ asset('assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('assets/js/accordions.js') }}"></script>
 
 
 

@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-content">
-                            <h4>500.00 - 700.00</h4>
-                            <h2>Product name</h2>
+                            <h4>{{ $product->prices }}</h4>
+                            <h2>{{ $product->name }}</h2>
                         </div>
                     </div>
                 </div>
@@ -27,43 +27,14 @@
                     <br>
 
                     <div class="row">
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-1-720x480.jpg" alt="" class="img-fluid">
+                        @foreach ($product->image as $collection)
+                            <div class="col-sm-4 col-6">
+                                <div>
+                                    <img src="{{ $collection }}" alt="" class="img-fluid">
+                                </div>
+                                <br>
                             </div>
-                            <br>
-                        </div>
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-2-720x480.jpg" alt="" class="img-fluid">
-                            </div>
-                            <br>
-                        </div>
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-3-720x480.jpg" alt="" class="img-fluid">
-                            </div>
-                            <br>
-                        </div>
-
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-4-720x480.jpg" alt="" class="img-fluid">
-                            </div>
-                            <br>
-                        </div>
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-5-720x480.jpg" alt="" class="img-fluid">
-                            </div>
-                            <br>
-                        </div>
-                        <div class="col-sm-4 col-6">
-                            <div>
-                                <img src="assets/images/product-6-720x480.jpg" alt="" class="img-fluid">
-                            </div>
-                            <br>
-                        </div>
+                        @endforeach
                     </div>
 
                     <br>
@@ -90,7 +61,7 @@
                             </div>
 
                             <div class="content">
-                                <form id="contact" action="" method="post">
+                                <form id="contact">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
@@ -114,7 +85,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <fieldset>
-                                                <button type="submit" id="form-submit" class="main-button">Add to
+                                                <button type="submit" id="form-submit" class="main-button" onclick="update({{ $product->id }})">Add to
                                                     Cart</button>
                                             </fieldset>
                                         </div>
@@ -162,3 +133,43 @@
         </div>
     </div>
 @endsection
+<script>
+    function update(param) {
+        // console.log(param);
+        event.preventDefault()
+        var product_id = param;
+        $.ajax({
+            url: "/addcart",
+            type: "get",
+            data: {
+                id: product_id
+            },
+            success: function(res) {
+                //   $("#crt_table").html(res);
+                alert(res.msg)
+            },
+            error: function(data) {
+                console.log('Error:', data);
+            }
+        });
+    }
+
+    // function wish(param) {
+    //     console.log(param);
+    //     var product_id = param;
+    //     $.ajax({
+    //         url: "/addwhis",
+    //         type: "get",
+    //         data: {
+    //             id: product_id
+    //         },
+    //         success: function(res) {
+    //             $("#crt_table").html(res);
+    //             alert(res.msg)
+    //         },
+    //         error: function(data) {
+    //             console.log('Error:', data);
+    //         }
+    //     });
+    // }
+</script>

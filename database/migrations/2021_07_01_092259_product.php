@@ -19,10 +19,8 @@ class product extends Migration
             $table->string('name');
             $table->string('price');
             $table->string('cat');
-            $table->string('display');
             $table->string('dis');
             $table->json('color');
-            $table->json('size');
             $table->timestamp('created_at');
         });
     }

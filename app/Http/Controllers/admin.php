@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\cart;
+use App\product;
 use App\register;
+use Illuminate\Http\Request;
 
 class admin extends Controller
 {
-     public function register(Request $request)
+    public function register(Request $request)
     {
-        
+
         $Register = new register();
         $Register->frist_name = $request->frist_name;
         $Register->last_name = $request->last_name;
@@ -49,5 +51,68 @@ class admin extends Controller
     {
         $request->Session()->forget('logid');
         return redirect('/')->with('logout', 'Logout successfly....');
+    }
+    public function index($cat)
+    {
+        $Product = product::where('cat', $cat)->get();
+        // error_log($Product);
+        return view(
+            'product',
+            [
+                'product' => $Product,
+                'cat' => $cat,
+            ]
+        );
+    }
+    public function product($id)
+    {
+        $Product = product::where('id', $id)->get();
+        $allProduct = product::all();
+        foreach ($Product as $s) {
+            $Product = $s;
+        }
+        $newproduct = product::where('cat', 1)->get();
+        // error_log($newproduct);
+        return view(
+            'product-detail',
+            [
+                'product' => $Product,
+                'newproduct' => $newproduct,
+            ]
+        );
+    }
+    public function addcart(Request $request)
+    {
+        $id = $request->id;
+        $Cart = new cart();
+        $value = $request->session()->get('logid');
+        if ($value != "") {
+            $res = Cart::where('proid', $id)->where('userid', $value)->get();
+            if ($res->isEmpty()) {
+                $Product = product::where('id', $id)->get();
+                // error_log($Product);
+                foreach ($Product as $s) {
+                    $Cart->proid = $s->id;
+                    foreach ($s->image as $p) {
+                        $i = 1;
+                        if ($i <= 1) {
+                            $Cart->productimage = $p;
+                        }}
+                    $Cart->productname = $s->name;
+                    $Cart->qut = 1;
+                    $Cart->price = $s->price;
+                    $Cart->userid = $value;
+                    $Cart->save();
+                }
+                error_log("sesscuss ...");
+                return ["msg" => "Product is Add into Cart"];
+            } else {
+                error_log("Product is allready in cart.....");
+                return ["msg" => "Product is allready in cart....."];
+            }
+        } else {
+            error_log("please Login");
+            return ["msg" => "Please Login....."];
+        }
     }
 }

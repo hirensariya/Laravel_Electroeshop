@@ -27,15 +27,12 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/product', function () {
-    return view('product');
-});
-Route::get('/product-detail', function () {
-    return view('product-detail');
-});
+Route::get('/product/{cat}', 'admin@index');
+
+Route::get('/product-detail/{id}', 'admin@product');
+
+Route::get('/addcart', 'admin@addcart');
+
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -44,4 +41,8 @@ Route::get('/checkout', function () {
 });
 Route::get('/cart', function () {
     return view('cart');
+});
+
+Route::get('/about', function () {
+    return view('about');
 });
