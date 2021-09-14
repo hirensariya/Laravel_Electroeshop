@@ -13,7 +13,11 @@
         alert('{{ Session::get('logout') }}');
     </script>
 @endif
-
+@if (Session::has('checkoutstsuts'))
+    <script>
+        alert('{{ Session::get('checkoutstsuts') }}');
+    </script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 

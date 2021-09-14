@@ -96,78 +96,37 @@
                 <h2 class="text-center">Featured Products</h2>
                 <br>
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="blog-post">
-                            <div class="blog-thumb">
-                                <img src="assets/images/product-4-720x480.jpg" alt="">
-                            </div>
-                            <div class="down-content">
+                    @foreach ($product as $item)
+                        <div class="col-md-4 col-sm-6">
+                            <div class="blog-post">
+                                @foreach ($item->image as $p)
+                                    @if ($loop->iteration <= 1)
+                                        <div class="blog-thumb">
+                                            <img src="{{$p}}" alt="">
+                                        </div>
+                                    @endif
+                                @endforeach
+                                <div class="down-content">
 
-                                <a href="products.html">
-                                    <h4>Product Name</h4>
-                                </a>
-                                <p>Product description will avaliable soon....</p>
-                                <div class="post-options">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <ul class="post-tags">
-                                                <li><i class="fa fa-bullseye"></i></li>
-                                                <li><a href="product-details.html">View Product</a></li>
-                                            </ul>
+                                    <a href="products.html">
+                                        <h4>{{ $item->name }}</h4>
+                                    </a>
+                                    <p>{{ $item->dis }}</p>
+                                    <div class="post-options">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <ul class="post-tags">
+                                                    <li><i class="fa fa-bullseye"></i></li>
+                                                    <li><a href="/product-detail/{{ $item->id }}">View Product</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="blog-post">
-                            <div class="blog-thumb">
-                                <img src="assets/images/product-5-720x480.jpg" alt="">
-                            </div>
-                            <div class="down-content">
+                    @endforeach
 
-                                <a href="products.html">
-                                    <h4>Product Name</h4>
-                                </a>
-                                <p>Product description will avaliable soon....</p>
-                                <div class="post-options">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <ul class="post-tags">
-                                                <li><i class="fa fa-bullseye"></i></li>
-                                                <li><a href="product-details.html">View Product</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="blog-post">
-                            <div class="blog-thumb">
-                                <img src="assets/images/product-6-720x480.jpg" alt="">
-                            </div>
-                            <div class="down-content">
-
-                                <a href="products.html">
-                                    <h4>Product Name</h4>
-                                </a>
-                                <p>Product description will avaliable soon....</p>
-                                <div class="post-options">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <ul class="post-tags">
-                                                <li><i class="fa fa-bullseye"></i></li>
-                                                <li><a href="product-details.html">View Product</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
