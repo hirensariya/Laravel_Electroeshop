@@ -102,13 +102,15 @@
                                 @foreach ($item->image as $p)
                                     @if ($loop->iteration <= 1)
                                         <div class="blog-thumb">
-                                            <img src="{{$p}}" alt="">
+                                            <a href="/product-detail/{{ $item->id }}">
+                                                <img src="{{$p}}" alt="">
+                                            </a>
                                         </div>
                                     @endif
                                 @endforeach
                                 <div class="down-content">
 
-                                    <a href="products.html">
+                                    <a href="/product-detail/{{ $item->id }}">
                                         <h4>{{ $item->name }}</h4>
                                     </a>
                                     <p>{{ $item->dis }}</p>

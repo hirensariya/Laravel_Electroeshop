@@ -25,13 +25,15 @@
                                 @foreach ($collection->image as $p)
                                     @if ($loop->iteration <= 1)
                                         <div class="blog-thumb">
-                                            <img src="{{ asset('assets/images/product-1-720x480.jpg') }}" alt="">
+                                            <a href="/product-detail/{{ $collection->id }}">
+                                                <img src="{{ asset('assets/images/product-1-720x480.jpg') }}" alt="">
+                                            </a>
                                         </div>
                                     @endif
                                 @endforeach
                                 <div class="down-content">
                                     <span> {{ $collection->price }} </span>
-                                    <a href="product-details.html">
+                                    <a href="/product-detail/{{ $collection->id }}">
                                         <h4>{{ $collection->name }}</h4>
                                     </a>
                                     <p>{{ $collection->dis }}</p>

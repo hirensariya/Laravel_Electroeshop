@@ -143,6 +143,7 @@
             type: "get",
             data: {
                 id: product_id
+                
             },
             success: function(res) {
                 //   $("#crt_table").html(res);

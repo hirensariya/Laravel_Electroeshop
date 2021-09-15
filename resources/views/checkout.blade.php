@@ -141,7 +141,7 @@
                                         <label class="control-label">Payment method</label>
 
                                         <select class="form-control">
-                                            <option value="">Debit/Credit car   d</option>
+                                            <option value="">Debit/Credit card</option>
                                             <option value="bank">Bank account</option>
                                             <option value="cash">Cash</option>
                                             <option value="paypal">PayPal</option>

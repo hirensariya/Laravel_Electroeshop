@@ -90,12 +90,12 @@
 
                         <div class="dropdown-menu">
                             <a class="dropdown-item " href="/about">About Us</a>
-                            <a class="dropdown-item" href="#">Testimonials</a>
+                            <a class="dropdown-item" href="/contact">Contact Us</a>
                             <a class="dropdown-item" href="#">Terms</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact Us</a>
+                        <a class="nav-link" href="/cart">Cart</a>
                     </li>
                     @if (Session::has('logid'))
                         <li class="nav-item">

@@ -119,9 +119,14 @@
                 quntity: $qut
             },
             success: function(response) {
+                if($qut<=0){
+                    alert(response.msg);
+                    window.location.reload();
+                }else{
                 document.getElementById('price' + param).innerHTML = response.price;
                 document.getElementById('new').innerHTML = response.totalprice;
                 document.getElementById('new1').innerHTML = response.totalprice;
+                }
             },
             error: function(data) {
                 console.log('Error:', data);

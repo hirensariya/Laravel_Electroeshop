@@ -118,11 +118,11 @@ class admin extends Controller
                     $Cart->userid = $value;
                     $Cart->save();
                 }
-                error_log("sesscuss ...");
-                return ["msg" => "Product is Add into Cart"];
+                error_log("success ...");
+                return ["msg" => "Product is Added into Cart"];
             } else {
-                error_log("Product is allready in cart.....");
-                return ["msg" => "Product is allready in cart....."];
+                error_log("Product is already in cart.....");
+                return ["msg" => "Product is already in cart....."];
             }
         } else {
             error_log("please Login");
@@ -142,6 +142,9 @@ class admin extends Controller
         $userid = $request->session()->get('logid');
         $id = $request->id;
         $qut = $request->quntity;
+        if($qut <= 0){
+            return ["msg"=>"Minimum 1 quantity required"];
+        }else{
         $res = Cart::where('id', $id)->limit(1)->update(['qut' => $qut]);
         if ($res == 1) {
             $newres = cart::where('id', $id)->get();
@@ -155,6 +158,7 @@ class admin extends Controller
             }
             return ["price" => $st, "totalprice" => $stq];
         }
+    }
     }
     public function checkout(Request $request)
     {
