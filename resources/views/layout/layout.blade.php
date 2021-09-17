@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
 </head>
 
@@ -95,17 +96,19 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/cart">Cart</a>
+                        <a class="nav-link" href="/cart"><h4><i class="bi bi-cart4"></i></h4></a>
                     </li>
                     @if (Session::has('logid'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout
-                                <span class="sr-only">(current)</span>
-                            </a>
-                            <a class="nav-link" href="/logout">{{ Session::get('logname') }}
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">{{ Session::get('logname') }} <i class="bi bi-person"></i></a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item " href="#">My Profile</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </div>
+                    </li>
+
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login
