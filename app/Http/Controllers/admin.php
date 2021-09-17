@@ -13,9 +13,11 @@ use SebastianBergmann\Environment\Console;
 
 class admin extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
         $Product = product::all();
+        $value = $request->session()->get('logid');
+        $res = register::where('id', $value)->get();
         return view(
             'index',
             [
@@ -58,6 +60,7 @@ class admin extends Controller
                 $res = $s;
             }
             $request->session()->put('logid', $res->id);
+            $request->session()->put('logname', $res->frist_name);
             return redirect('/')->with('Login', 'You have login successfly');
         }
     }
@@ -98,6 +101,8 @@ class admin extends Controller
     public function addcart(Request $request)
     {
         $id = $request->id;
+        $quntity = $request->quntity;
+        $color = $request->color;
         $Cart = new cart();
         $value = $request->session()->get('logid');
         if ($value != "") {
@@ -113,7 +118,8 @@ class admin extends Controller
                             $Cart->productimage = $p;
                         }}
                     $Cart->productname = $s->name;
-                    $Cart->qut = 1;
+                    $Cart->color = $color;
+                    $Cart->qut = $quntity;
                     $Cart->price = $s->price;
                     $Cart->userid = $value;
                     $Cart->save();
@@ -258,6 +264,7 @@ class admin extends Controller
             $order->pid = $s->proid;
             $order->pname = $s->productname;
             $order->pqty = $s->qut;
+            $order->pcolor = $s->color;
             $order->pprice = $s->price;
             $order->oname = $oname;
             $order->ophone = $ophone;

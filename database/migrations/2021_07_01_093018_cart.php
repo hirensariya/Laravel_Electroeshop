@@ -18,6 +18,7 @@ class Cart extends Migration
             $table->string('proid');
             $table->string('productimage');
             $table->string('productname');
+            $table->string('color');
             $table->string('qut');
             $table->string('price');
             $table->string('userid');

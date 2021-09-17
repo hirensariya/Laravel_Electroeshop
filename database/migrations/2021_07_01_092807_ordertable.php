@@ -20,6 +20,7 @@ class Ordertable extends Migration
             $table->string('pid');
             $table->string('pname');
             $table->string('pqty');
+            $table->string('pcolor');
             $table->string('pprice');
             $table->string('oname');
             $table->string('ophone');

@@ -102,6 +102,9 @@
                             <a class="nav-link" href="/logout">Logout
                                 <span class="sr-only">(current)</span>
                             </a>
+                            <a class="nav-link" href="/logout">{{ Session::get('logname') }}
+                                <span class="sr-only">(current)</span>
+                            </a>
                         </li>
                     @else
                         <li class="nav-item">

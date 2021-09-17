@@ -65,12 +65,12 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
-                                                <label for="">Extra 1</label>
-                                                <select>
-                                                    <option value="0">Extra A</option>
-                                                    <option value="0">Extra B</option>
-                                                    <option value="0">Extra C</option>
-                                                    <option value="0">Extra D</option>
+                                                <label for="">Color</label>
+                                                <select id="color">
+                                                    @foreach ($product->color as $item)
+                                                        <option value="{{$item}}">{{$item}}</option>
+                                                    @endforeach
+
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -80,12 +80,13 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label for="">Quantity</label>
-                                                <input type="text" value="1" required="">
+                                                <input type="text" value="1" required="" id="qut">
                                             </fieldset>
                                         </div>
                                         <div class="col-lg-12">
                                             <fieldset>
-                                                <button type="submit" id="form-submit" class="main-button" onclick="update({{ $product->id }})">Add to
+                                                <button type="submit" id="form-submit" class="main-button"
+                                                    onclick="update({{ $product->id }})">Add to
                                                     Cart</button>
                                             </fieldset>
                                         </div>
@@ -136,14 +137,18 @@
 <script>
     function update(param) {
         // console.log(param);
+        $qut = document.getElementById('qut').value;
+        $color = document.getElementById('color').value;
         event.preventDefault()
         var product_id = param;
         $.ajax({
             url: "/addcart",
             type: "get",
             data: {
-                id: product_id
-                
+                id: product_id,
+                quntity: $qut,
+                color:$color
+
             },
             success: function(res) {
                 //   $("#crt_table").html(res);

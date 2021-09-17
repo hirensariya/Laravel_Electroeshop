@@ -57,6 +57,7 @@
                         <th></th>
                         <th>Image</th>
                         <th>Product</th>
+                        <th>Color</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
@@ -73,6 +74,7 @@
                             <td><a class="aa-cart-title"
                                     href="/product-detail/{{ $item->proid }}">{{ $item->productname }}</a>
                             </td>
+                            <td>{{ $item->color }}</td>
                             <td>{{ $item->price }}</td>
                             <td><input class="aa-cart-quantity" type="number" value="{{ $item->qut }}"
                                     id="qut{{ $item->id }}" onchange="update({{ $item->id }})"
