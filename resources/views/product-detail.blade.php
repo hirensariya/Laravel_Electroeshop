@@ -30,7 +30,7 @@
                         @foreach ($product->image as $collection)
                             <div class="col-sm-4 col-6">
                                 <div>
-                                    <img src="{{ $collection }}" alt="" class="img-fluid">
+                                    <img src="/image/{{ $collection }}" alt="" class="img-fluid">
                                 </div>
                                 <br>
                             </div>

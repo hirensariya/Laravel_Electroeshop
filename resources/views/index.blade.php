@@ -103,7 +103,7 @@
                                     @if ($loop->iteration <= 1)
                                         <div class="blog-thumb">
                                             <a href="/product-detail/{{ $item->id }}">
-                                                <img src="{{$p}}" alt="">
+                                                <img src="/image/{{$p}}" alt="" style="height:15rem; width:15rem">
                                             </a>
                                         </div>
                                     @endif

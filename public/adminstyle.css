@@ -1,0 +1,172 @@
+body{
+padding: 0;
+margin: 0;
+/* background-color: lavender; */
+
+}
+#n
+{
+margin-top: 0.5rem;
+padding: 0;
+margin-bottom: 0;
+justify-content: center;
+
+}
+#a1{
+margin: 0;
+padding: 0;
+font-size: 2rem;
+font-family: 'Playfair Display', serif;
+color: rgb(11, 189, 248);
+}
+
+#navbarSupportedContent ul li{
+font-size: 1.5rem;
+}
+#topsale
+{
+width: 100%;
+justify-content: center;
+
+}
+
+
+
+.tops
+{
+padding-left: 130px;
+margin-top: 10px;
+padding-top: 30px;
+}
+#special
+{
+align-items: center;
+justify-content: center;
+
+}
+.card img:hover
+{
+transition-duration: 1s;
+transform: scale(1.1);
+}
+#i
+{
+margin: auto;
+padding: 10px;
+}
+
+.btn-group
+{
+margin-left: 1100px;
+text-decoration-line: underline;
+}
+.btn-group .btn
+{
+
+font-size: 20px;
+padding: 5px;
+}
+.h{
+
+padding-left: 110px;
+margin-top: 3rem;
+}
+
+#marketing{
+margin:auto;
+align-items: center;
+width: 98%;
+margin-top: 1rem;
+}
+#marketing img{
+justify-content: center;
+height: 25rem;
+width: 100%;
+}
+
+
+#limited{
+margin-top: 1rem;
+margin-bottom: 1rem;
+}
+#limited .card-header{
+font-size: 1.5rem;
+}
+#limited .card-footer{
+font-size: 1.5rem;
+}
+#footer
+{
+background-color: rgb(49, 46, 46);
+color: cyan;
+margin-left: 0px;
+margin-bottom: 0px;
+padding-bottom: 0;
+}
+#icon img
+{
+margin: 1rem;
+}
+#pt
+{
+margin: 1rem;
+margin-left: 1.6rem;
+}
+#grid{
+margin-left:5rem;
+
+}
+#card{
+margin-left: 6rem;
+}
+#newp{
+text-align: center; border: none; border-radius: 5px;-webkit-box-shadow: 12px 14px 22px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 12px 14px 22px 2px rgba(0,0,0,0.75);
+box-shadow: 12px 14px 22px 2px rgba(0,0,0,0.75);
+margin-bottom: 2rem;
+
+
+
+}
+#newdiv{
+justify-content: center;
+}
+
+
+/* support styling*/
+
+/*Support Style*/
+.support .container{
+display: flex;
+justify-content: center;
+
+
+}
+.support .container .h4{
+justify-content: center;
+width: 25%;
+}
+.support .container .h4 h4{
+margin-left: 2rem;
+}
+/* support styling*/
+
+/* product page */
+.procute{
+display: flex;
+justify-content: center;
+width: 80%;
+height: 80%;
+border: 5px solid slateblue;
+margin: auto;
+}
+
+.productimage{
+border: 2px solid rebeccapurple;
+display: inline-block;
+width: 20%;
+height: 40%;
+justify-content: center;
+}
+
+/* product page */

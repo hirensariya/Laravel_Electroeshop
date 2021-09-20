@@ -8,6 +8,7 @@ use App\cart;
 use App\wishlist;
 use App\ordertable;
 use App\temptable;
+use App\admindetail;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
@@ -283,6 +284,232 @@ class admin extends Controller
     {
         $newres = cart::where('id', $id)->delete();
         return redirect('/cart')->with('deletecart', 'Item is deleted');
+    }
+
+    public function vieworder(Request $request)
+    {
+        $userid = $request->session()->get('logid');
+        $res = ordertable::where('userid', $userid)->get();
+    //    foreach ($res as $Res) {
+    //        $s = $Res;
+    //    }
+       return view('order',['res'=>$res]);
+    }
+
+    public function editprof(Request $request)
+    {   
+        $userid = $request->session()->get('logid');
+         $res = register::where('id', $userid)->get();
+        foreach ($res as $Res) {
+            $s = $Res;
+        }
+        return view('editpro',['res'=>$s]);
+    }
+    public function upprof(Request $request)
+    {
+        $userid = $request->session()->get('logid');
+        $Register = new register();
+        $res = $Register->where('id',$userid)->update([
+            'frist_name' => $request->first,
+            'last_name' => $request->last,
+            'email' => $request->email,
+            'phone'=> $request->phone,
+            'password'=> $request->password,
+            'address' => $request->address,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'district' => $request->district,
+            'zip'=> $request->zip,
+        ]); 
+        if ($res) {
+            return back()->with('update', 'Update successfly');
+        } else {
+            return back()->with('update', 'Somethong goes wrong');
+        }
+    }
+
+    // ADMIN PART START
+
+
+    public function adminlogin(Request $request)
+    {
+      $name=$request->name;
+      $password=$request->password;
+      $res = admindetail::where('name', $name)->where('password', $password)->get();
+        if ($res->isEmpty()) {
+            return back()->with('adminFailLogin', 'Name or Password is not correct...');
+        } else {
+            foreach ($res as $s) {
+                $res = $s;
+            }
+            $request->session()->put('adminlogid', $res->id);
+            return redirect('/admin/dashbord')->with('adminLogin', 'You have login successfly');
+            // return back()->with('adminFailLogin', 'Successfully login...');
+        }
+
+    }
+
+    public function admindashbord(Request $request)
+    {
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {   
+            $Product = product::all();
+            return view('admin/dashborad',['res'=>$Product]);
+
+        }else{
+            return redirect('/admin/')->with('status', 'Please Login....');
+        }
+     
+    }
+    public function adminorder(Request $request)
+    {
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {   
+           
+        $Product = ordertable::all();
+        return view('admin/orderlist',['res'=>$Product]);
+        }else{
+            return redirect('/admin/')->with('status', 'Please Login....');
+       }
+    }
+    public function admincustmer(Request $request)
+    {
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {  
+        $Register = register::all();
+        return view('admin/custmer',['res'=>$Register]);
+       }else{
+        return redirect('/admin/')->with('status', 'Please Login....');
+       }
+    }
+    public function adminaddproduct(Request $request)
+    {
+        
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {  
+            $this->validate($request,[
+                'images'=>'required',
+                'images.*'=>'image'
+            ]);
+            $files=[];
+            if($request->hasFile('images'))
+            {
+                foreach($request->file('images') as $file)
+                {
+                    $name=$file->getClientOriginalName();
+                    $file->move(public_path('image'),$name);
+                    error_log($name);
+                    $files[]=$name;
+                } 
+                  
+            }
+            
+            $Product= new product();
+            $Product->image=$files;
+            $Product->cat = $request->cat;
+            $Product->name= $request->pname;
+            $Product->price=$request->pprice;
+            $Product->dis=$request->pdis;
+            $Product->color=$request->color;
+            $res = $Product->save();
+
+        if ($res) {
+            // return redirect('/')->with('Success', 'you have register successfly');
+            return back()->with('addproduct', 'Product is successfly added');
+        } else {
+            return back()->with('addproduct', 'Somethong goes wrong');
+        }
+        // return view('admin/addproduct');
+       }else{
+        return redirect('/admin/')->with('status', 'Please Login....');
+       }
+    }
+    public function adminlogout(Request $request)
+    {
+        $request->Session()->forget('adminlogid');
+        return redirect('/admin')->with('logout', 'Logout successfly....');
+    }
+    public function admineditproduct(Request $request, $id)
+    {
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {  
+        $Product = product::where('id', $id)->get();
+        foreach ($Product as $s) {
+            $Product = $s;
+        }
+        return view('admin/edirproduct',['product' => $Product,]);
+         }else{
+        return redirect('/admin/')->with('status', 'Please Login....');
+       }
+    }
+    public function admindetailproduct(Request $request,$id)
+    {
+        $Product= new product();
+        $userid = $request->session()->get('adminlogid');
+        $oldtyep=$request->images;
+        if ($userid != "") 
+        {  
+            if($oldtyep)
+            {
+                $this->validate($request,[
+                'images'=>'required',
+                'images.*'=>'image'
+            ]);
+            $files=[];
+            if($request->hasFile('images'))
+            {
+                foreach($request->file('images') as $file)
+                {
+                    $name=$file->getClientOriginalName();
+                    $file->move(public_path('image'),$name);
+                    // error_log($name);
+                    $files[]=$name;
+                } 
+                  
+            }
+            
+            $res = $Product->where('id',$id)->update([
+                'image' => $files,
+                'name' => $request->pname,
+                'price' => $request->pprice,
+                'cat'=>$request->cat,
+                'display'=> $request->display,
+                'dis' => $request->pdis,
+            ]); 
+        if ($res) {
+            return back()->with('editpro', 'Edit successfly');
+        } else {
+            return back()->with('editpro', 'Somethong goes wrong');
+        }
+            }else{
+                $res = $Product->where('id',$id)->update([
+                    'name' => $request->pname,
+                    'price' => $request->pprice,
+                    'cat'=>$request->cat,
+                    'display'=> $request->display,
+                    'dis' => $request->pdis,
+                ]); 
+            if ($res) {
+                return back()->with('editpro', 'Editsuccessfly');
+            } else {
+                return back()->with('editpro', 'Somethong goes wrong');
+            }
+            }
+            
+           
+       }else{
+        return redirect('/admin/')->with('status', 'Please Login....');
+       }
+    }
+    public function admindeletproduct(Request $request,$id)
+    {
+        $newres = product::where('id', $id)->delete();
+        return redirect('/admin/dashbord')->with('deleteproduct', 'Product is deleted');
     }
 }
 
