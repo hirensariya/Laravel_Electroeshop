@@ -62,6 +62,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/quary">Quary
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/logout">Logout</a>
                     </li>
                 </ul>

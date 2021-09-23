@@ -11,13 +11,13 @@
                     <th scope="col">Product name</th>
                     <th scope="col">Product quantaty</th>
                     <th scope="col">Product price</th>
-                    <th scope="col">Coustmer name</th>
-                    <th scope="col">Coustmer phone</th>
-                    <th scope="col">Coustmer address</th>
-                    <th scope="col">Coustmer address2</th>
-                    <th scope="col">Coustmer City</th>
-                    <th scope="col">Coustmer Districe</th>
-                    <th scope="col">Coustmer Zip/Postcode</th>
+                    <th scope="col">Customer name</th>
+                    <th scope="col">Customer phone</th>
+                    <th scope="col">Customer address</th>
+                    <th scope="col">Customer address2</th>
+                    <th scope="col">Customer City</th>
+                    <th scope="col">Customer Districe</th>
+                    <th scope="col">Customer Zip/Postcode</th>
                     <th scope="col">Date</th>
                 </tr>
             </thead>

@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <?php
-                $no = 0;
+                $no = 1;
                 ?>
                 <tr>
                     @foreach ($res as $item)

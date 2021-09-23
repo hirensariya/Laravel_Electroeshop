@@ -69,7 +69,7 @@
                             <td><a class="remove" href="/deletecart/{{ $item->id }}">
                                     <fa class="fa fa-close"></fa>
                                 </a></td>
-                            <td><a href="/product-detail/{{ $item->proid }}"><img src="{{ $item->productimage }}"
+                            <td><a href="/product-detail/{{ $item->proid }}"><img src="/image/{{ $item->productimage }}"
                                         alt="img" style="width: 45px; height:45px"></a></td>
                             <td><a class="aa-cart-title"
                                     href="/product-detail/{{ $item->proid }}">{{ $item->productname }}</a>
@@ -102,7 +102,7 @@
                 </tbody>
             </table>
             <form action="/checkout">
-                <button class="aa-cart-view-btn">Proced to Checkout</button>
+                <button class="btn-primary mt-5 aa-cart-view-btn" >Proceed to Checkout</button>
             </form>
 
         </div>

@@ -22,10 +22,10 @@
                         <label for="cat">Product Category</label>
                         <select name="cat" id="cat" class="form-control" onchange="div()">
                             <option value="">-Select-</option>
-                            <option value="Electronics">Electronics</option>
-                            <option value="Cover">Cover</option>
-                            <option value="Dress">Dress</option>
-                            <option value="General">General</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Camera">Camera</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Headphones">Headphones</option>
                         </select>
                         <div class="invalid-feedback">
                             Please enter Product Category
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="pdis">Procduct Discription</label>
+                        <label for="pdis">Product Discription</label>
                         <input type="text" class="form-control" id="pdis" name="pdis" required="" autofocus="">
                         <div class="invalid-feedback">
                             Please enter product discription
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" name="singup" type="submit">Sing Up</button>
+                    <button class="btn btn-primary btn-lg btn-block" name="singup" type="submit">Add Item</button>
                 </form>
             </div>
         </div>

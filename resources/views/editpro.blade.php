@@ -12,7 +12,7 @@
             <div class="col-md-12 order-md-12 mb-12">
             </div>
             <div class="col-md-12 order-md-12">
-                <h4 class="mb-3">Sign Up</h4>
+                <h4 class="mb-3">User Profile</h4>
                 <form class="needs-validation" novalidate="" action="/editprof" method="post">
                     @csrf
                     <div class="row">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Password">Password</label>
-                        <input type="text" class="form-control" id="Password" name="password" required=""
+                        <input type="password" class="form-control" id="Password" name="password" required=""
                             autofocus="" value="{{ $res->password }}">
                     </div>
 

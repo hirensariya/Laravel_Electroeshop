@@ -92,7 +92,6 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item " href="/about">About Us</a>
                             <a class="dropdown-item" href="/contact">Contact Us</a>
-                            <a class="dropdown-item" href="#">Terms</a>
                         </div>
                     </li>
                     <li class="nav-item">

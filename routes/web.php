@@ -56,6 +56,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::post('/query', 'admin@query');
+
+
 // ADMIN ROUTE
 
 Route::post('/admin/', 'admin@adminlogin');
@@ -85,3 +88,5 @@ Route::get('/admin/editproduct/{id}', 'admin@admineditproduct');
 Route::post('/admin/editproduct/{id}', 'admin@admindetailproduct');
 
 Route::get('/admin/deletproduct/{id}', 'admin@admindeletproduct');
+
+Route::get('/admin/quary', 'admin@adminquary');

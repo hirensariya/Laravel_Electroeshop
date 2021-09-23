@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\product;
 use App\register;
 use App\cart;
-use App\wishlist;
+use App\QuaryTable;
 use App\ordertable;
 use App\temptable;
 use App\admindetail;
@@ -290,9 +290,6 @@ class admin extends Controller
     {
         $userid = $request->session()->get('logid');
         $res = ordertable::where('userid', $userid)->get();
-    //    foreach ($res as $Res) {
-    //        $s = $Res;
-    //    }
        return view('order',['res'=>$res]);
     }
 
@@ -328,9 +325,25 @@ class admin extends Controller
         }
     }
 
+    public function query(Request $request)
+    {
+        $quary = new QuaryTable();
+        $quary->name = $request->name;
+        $quary->email = $request->email;
+        $quary->subject = $request->subject;
+        $quary->message = $request->message;
+        $res = $quary->save();
+        error_log($res);
+        if ($res) {
+            return back()->with('quary', 'Message Succefully Send');
+        } else {
+            return back()->with('quary', 'Somethong goes wrong');
+        }
+
+    }
+
+
     // ADMIN PART START
-
-
     public function adminlogin(Request $request)
     {
       $name=$request->name;
@@ -478,7 +491,6 @@ class admin extends Controller
                 'name' => $request->pname,
                 'price' => $request->pprice,
                 'cat'=>$request->cat,
-                'display'=> $request->display,
                 'dis' => $request->pdis,
             ]); 
         if ($res) {
@@ -491,11 +503,10 @@ class admin extends Controller
                     'name' => $request->pname,
                     'price' => $request->pprice,
                     'cat'=>$request->cat,
-                    'display'=> $request->display,
                     'dis' => $request->pdis,
                 ]); 
             if ($res) {
-                return back()->with('editpro', 'Editsuccessfly');
+                return back()->with('editpro', 'Edit Successfly');
             } else {
                 return back()->with('editpro', 'Somethong goes wrong');
             }
@@ -511,5 +522,22 @@ class admin extends Controller
         $newres = product::where('id', $id)->delete();
         return redirect('/admin/dashbord')->with('deleteproduct', 'Product is deleted');
     }
+
+
+    public function adminquary(Request $request)
+    {
+        $userid = $request->session()->get('adminlogid');
+        if ($userid != "") 
+        {   
+            $quary = QuaryTable::all();
+            return view('admin/quary',['res'=>$quary]);
+
+        }else{
+            return redirect('/admin/')->with('status', 'Please Login....');
+        }
+     
+    }
 }
+
+
 
